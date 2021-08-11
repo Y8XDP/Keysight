@@ -9,8 +9,15 @@
   </Class>
   <Class Name="KeysightMultimeter.Reader">
     <Position X="4" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="KeysightMultimeter.Reader.OnDataAccepted" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Reader.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAIAAAABAAAiAAAAAGAIAAAAAAEQAAAAgAAIA=</HashCode>
+      <HashCode>AAAAAAAAEAAAIAAAAAMAAAAkABAAAAEAAAAAgA0AIAA=</HashCode>
       <FileName>Reader.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -24,7 +31,7 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQQAAQAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAgAAAAAAAQAAAAAAAAAAA=</HashCode>
       <FileName>U2741A.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -38,17 +45,9 @@
   <Class Name="KeysightMultimeter.Example">
     <Position X="9.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAgAAAIAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAACAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Example.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
-  <Interface Name="KeysightMultimeter.DataListener">
-    <Position X="7.5" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
-      <FileName>DataListener.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

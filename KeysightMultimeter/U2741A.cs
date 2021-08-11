@@ -1,73 +1,69 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿
 namespace KeysightMultimeter
 {
-    public class U2741A: Reader
+    public class U2741A : Reader
     {
+        private MeasType currentType = MeasType.Unknown;
+
         public enum MeasType
         {
-            //Напряжение постоянный ток
-            VoltDC,
+            // Напряжение постоянный ток
+            VoltDc,
 
-            //Напряжение переменный ток
-            VoltAC,
+            // Напряжение переменный ток
+            VoltAc,
 
-            //Сила постоянный ток
-            AmpDC,
+            // Сила постоянный ток
+            AmpDc,
 
-            //Сила переменный ток
-            AmpAC,
+            // Сила переменный ток
+            AmpAc,
 
-            //Сопротивление
+            // Сопротивление
             Resist,
 
-            //Неизвестный тип до первой установки типа 
+            // Неизвестный тип до первой установки типа 
             Unknown
         }
 
-        MeasType currentType = MeasType.Unknown;
-
-        //Установка типа измеряемых данных
-        public void setMeasType(MeasType type)
+        // Установка типа измеряемых данных
+        public void SetMeasType(MeasType type)
         {
-            Boolean isSuccess = true;
+            var isSuccess = true;
 
             switch (type)
             {
-                case MeasType.VoltDC:
-                    write("CONF:VOLT:DC AUTO\n");
+                case MeasType.VoltDc:
+                    this.Write("CONF:VOLT:DC AUTO\n");
                     break;
-                case MeasType.VoltAC:
-                    write("CONF:VOLT:AC AUTO\n");
+                case MeasType.VoltAc:
+                    this.Write("CONF:VOLT:AC AUTO\n");
                     break;
-                case MeasType.AmpDC:
-                    write("CONF:CURR:DC AUTO\n");
+                case MeasType.AmpDc:
+                    this.Write("CONF:CURR:DC AUTO\n");
                     break;
-                case MeasType.AmpAC:
-                    write("CONF:CURR:AC AUTO\n");
+                case MeasType.AmpAc:
+                    this.Write("CONF:CURR:AC AUTO\n");
                     break;
                 case MeasType.Resist:
-                    write("CONF:RES AUTO\n");
+                    this.Write("CONF:RES AUTO\n");
                     break;
             }
 
             if (isSuccess)
             {
-                currentType = type;
+                this.currentType = type;
             }
         }
 
-        public string getResult()
+        public override string Read()
         {
-            if (currentType == MeasType.Unknown)
+            if (this.currentType == MeasType.Unknown)
             {
                 throw new TypeUnknownException("Не установлен тип измеряемых данных");
             }
 
-            return read();
+            return base.Read();
         }
     }
 }

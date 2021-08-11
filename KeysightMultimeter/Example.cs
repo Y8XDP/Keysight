@@ -1,36 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.ComponentModel;
-using System.Globalization;
-
+﻿
 namespace KeysightMultimeter
 {
-    public class Example: DataListener
+    using System;
+
+    public class Example
     {
-        private static U2741A instrument;
+        private U2741A instrument;
 
-        public void onDataAccepted(string data)
+        public void Start()
         {
-            Console.WriteLine(data);
-        }
+            this.instrument = new U2741A();
+            this.instrument.OpenSession("USB0::0x0957::0x4918::MY57029021::INSTR");
+            this.instrument.SetMeasType(U2741A.MeasType.VoltDc);
 
-        public void start()
-        {
-            instrument = new U2741A();
-            instrument.openSession("USB0::0x0957::0x4918::MY57029021::INSTR");
-            instrument.setMeasType(U2741A.MeasType.VoltAC);
-            instrument.setListener(this);
+            this.instrument.DataAccepted = new Reader.OnDataAccepted((data) =>
+            {
+                Console.WriteLine(data);
+            });
 
-            instrument.startReadingData();
+            this.instrument.StartReadingData();
 
             ConsoleKeyInfo k = Console.ReadKey();
 
             if (k.KeyChar == '0')
             {
-                instrument.stopReadingData();
-                instrument.closeSession();
+                this.instrument.StopReadingData();
+                this.instrument.CloseSession();
             }
         }
     }

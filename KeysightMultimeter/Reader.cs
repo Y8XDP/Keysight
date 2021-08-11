@@ -1,45 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NationalInstruments.Visa;
-using System.ComponentModel;
-using System.Globalization;
-using System.Threading;
-
+﻿
 namespace KeysightMultimeter
 {
-    public abstract class Reader
+    using System.Threading;
+    using NationalInstruments.Visa;
+
+    public class Reader
     {
-        private MessageBasedSession mSession;
+        private const string RecModeCommand = "SYST:REM\n";
+        private const string LocModeCommand = "SYST:LOC\n";
+        private const string ReadCommand = "READ?\n";
+
+        private OnDataAccepted dataAccepted;
+
+        private MessageBasedSession session;
         private ResourceManager manager;
 
-        private DataListener listener;
+        private bool isReading = false;
 
-        Boolean isReading = false;
+        public delegate void OnDataAccepted(string data);
 
-        //resourceName = DeviceID
-        public void openSession(string resourceName)
+        // resourceName = DeviceID
+        public void OpenSession(string resourceName)
         {
-            manager = new ResourceManager();
-            mSession = (MessageBasedSession)manager.Open(resourceName);
-            mSession.TimeoutMilliseconds = 5000;
+            this.manager = new ResourceManager();
+            this.session = (MessageBasedSession)this.manager.Open(resourceName);
+            this.session.TimeoutMilliseconds = 5000;
 
-            write("SYST:REM\n");
+            this.Write(RecModeCommand);
         }
 
-        public void closeSession()
+        public void CloseSession()
         {
-            write("SYST:LOC\n");
-            mSession.Dispose();
-            manager.Dispose();
+            this.Write(LocModeCommand);
+            this.session.Dispose();
+            this.manager.Dispose();
         }
 
-        public Boolean write(String msg)
+        public bool Write(string msg)
         {
-            if (mSession != null)
+            if (this.session != null)
             {
-                mSession.RawIO.Write(msg);
+                this.session.RawIO.Write(msg);
                 return true;
             }
             else
@@ -48,43 +49,30 @@ namespace KeysightMultimeter
             }
         }
 
-        public string read()
+        public void StartReadingData()
         {
-            write("READ?\n");
-            string reply = mSession.RawIO.ReadString();
+            this.isReading = true;
 
-            return reply.TrimEnd(new char[]{'\n','\r'});
-        }
-
-
-        public void setListener(DataListener listener)
-        {
-            this.listener = listener;
-        }
-
-        public void startReadingData()
-        {
-            Console.WriteLine(listener != null);
-
-            if (listener != null && !isReading)
+            new Thread(new ThreadStart(() =>
             {
-                isReading = true;
-
-                Thread thread = new Thread(new ThreadStart(() =>
+                while (this.isReading)
                 {
-                    while (isReading)
-                    {
-                        listener.onDataAccepted(read());
-                    }
-                }));
-
-                thread.Start();
-            }
+                    dataAccepted(Read());
+                }
+            })).Start();
         }
 
-        public void stopReadingData()
+        public void StopReadingData()
         {
-            isReading = false;
+            this.isReading = false;
+        }
+
+        public virtual string Read()
+        {
+            this.Write(ReadCommand);
+            string reply = this.session.RawIO.ReadString();
+
+            return reply.TrimEnd(new char[] { '\n', '\r' });
         }
     }
 }

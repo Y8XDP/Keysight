@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿// Copyright что то тут 
 
 namespace KeysightMultimeter
 {
-    public class TypeUnknownException: Exception
+    using System;
+
+    public class TypeUnknownException : Exception
     {
-        public TypeUnknownException(string msg): base(msg) {} 
+        public TypeUnknownException(string msg) : base(msg)
+        {
+        } 
     }
 }
