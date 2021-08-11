@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="KeysightMultimeter.Program" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KeysightMultimeter.Reader">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAABAAAiAAAAAGAIAAAAAAEQAAAAgAAIA=</HashCode>
+      <FileName>Reader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KeysightMultimeter.U2741A">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="KeysightMultimeter.U2741A.MeasType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>U2741A.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQQAAQAAAAAAAAAAA=</HashCode>
+      <FileName>U2741A.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KeysightMultimeter.TypeUnknownException">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TypeUnknownException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KeysightMultimeter.Example">
+    <Position X="9.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAIAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Example.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="KeysightMultimeter.DataListener">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataListener.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
