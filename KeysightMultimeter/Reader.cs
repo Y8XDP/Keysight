@@ -10,7 +10,7 @@ namespace KeysightMultimeter
         private const string LocModeCommand = "SYST:LOC\n";
         private const string ReadCommand = "READ?\n";
 
-        private OnDataAccepted dataAccepted;
+        public OnDataAccepted dataAccepted;
 
         private MessageBasedSession session;
         private ResourceManager manager;

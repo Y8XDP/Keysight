@@ -3,6 +3,12 @@ namespace KeysightMultimeter
 {
     public class U2741A : Reader
     {
+        private const string VoltDcConf = "CONF:VOLT:DC AUTO\n";
+        private const string VoltAcConf = "CONF:VOLT:AC AUTO\n";
+        private const string AmpDcConf = "CONF:CURR:DC AUTO\n";
+        private const string AmpAcConf = "CONF:CURR:AC AUTO\n";
+        private const string ResistanceConf = "CONF:RES AUTO\n";
+
         private MeasType currentType = MeasType.Unknown;
 
         public enum MeasType
@@ -34,19 +40,19 @@ namespace KeysightMultimeter
             switch (type)
             {
                 case MeasType.VoltDc:
-                    this.Write("CONF:VOLT:DC AUTO\n");
+                    this.Write(VoltDcConf);
                     break;
                 case MeasType.VoltAc:
-                    this.Write("CONF:VOLT:AC AUTO\n");
+                    this.Write(VoltAcConf);
                     break;
                 case MeasType.AmpDc:
-                    this.Write("CONF:CURR:DC AUTO\n");
+                    this.Write(AmpDcConf);
                     break;
                 case MeasType.AmpAc:
-                    this.Write("CONF:CURR:AC AUTO\n");
+                    this.Write(AmpAcConf);
                     break;
                 case MeasType.Resist:
-                    this.Write("CONF:RES AUTO\n");
+                    this.Write(ResistanceConf);
                     break;
             }
 

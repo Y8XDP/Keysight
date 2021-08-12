@@ -13,10 +13,7 @@ namespace KeysightMultimeter
             this.instrument.OpenSession("USB0::0x0957::0x4918::MY57029021::INSTR");
             this.instrument.SetMeasType(U2741A.MeasType.VoltDc);
 
-            this.instrument.DataAccepted = new Reader.OnDataAccepted((data) =>
-            {
-                Console.WriteLine(data);
-            });
+            this.instrument.dataAccepted += OnDataAccepted;
 
             this.instrument.StartReadingData();
 
@@ -28,5 +25,11 @@ namespace KeysightMultimeter
                 this.instrument.CloseSession();
             }
         }
+
+        private void OnDataAccepted(string data)
+        {
+            Console.WriteLine(data);
+        }
+
     }
 }

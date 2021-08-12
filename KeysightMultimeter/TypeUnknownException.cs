@@ -6,6 +6,7 @@ namespace KeysightMultimeter
 
     public class TypeUnknownException : Exception
     {
+
         public TypeUnknownException(string msg) : base(msg)
         {
         } 
