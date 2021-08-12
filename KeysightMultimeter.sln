@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeysightMultimeter", "KeysightMultimeter\KeysightMultimeter.csproj", "{A8E48FAC-F45C-4D71-A841-0BB846A8A4DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleAppKeysightMultimeter", "ExampleAppKeysightMultimeter\ExampleAppKeysightMultimeter.csproj", "{34239BC6-12A2-47F7-8E59-A785184D1D6B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A8E48FAC-F45C-4D71-A841-0BB846A8A4DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8E48FAC-F45C-4D71-A841-0BB846A8A4DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8E48FAC-F45C-4D71-A841-0BB846A8A4DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34239BC6-12A2-47F7-8E59-A785184D1D6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34239BC6-12A2-47F7-8E59-A785184D1D6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34239BC6-12A2-47F7-8E59-A785184D1D6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34239BC6-12A2-47F7-8E59-A785184D1D6B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

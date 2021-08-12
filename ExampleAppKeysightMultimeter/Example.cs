@@ -1,10 +1,12 @@
 ﻿
-namespace KeysightMultimeter
+namespace ExampleAppKeysightMultimeter
 {
     using System;
+    using KeysightMultimeter;
 
-    public class Example
+    class Example
     {
+
         private U2741A instrument;
 
         public void Start()
@@ -30,6 +32,5 @@ namespace KeysightMultimeter
         {
             Console.WriteLine(data);
         }
-
     }
 }

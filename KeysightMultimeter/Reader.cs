@@ -25,7 +25,7 @@ namespace KeysightMultimeter
             this.manager = new ResourceManager();
             this.session = (MessageBasedSession)this.manager.Open(resourceName);
             this.session.TimeoutMilliseconds = 5000;
-
+              
             this.Write(RecModeCommand);
         }
 
@@ -43,10 +43,8 @@ namespace KeysightMultimeter
                 this.session.RawIO.Write(msg);
                 return true;
             }
-            else
-            {
-                return false;
-            }
+           
+            return false;
         }
 
         public void StartReadingData()
