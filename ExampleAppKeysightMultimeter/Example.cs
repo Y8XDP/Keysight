@@ -12,7 +12,7 @@ namespace ExampleAppKeysightMultimeter
         public void Start()
         {
             this.instrument = new U2741A();
-            this.instrument.OpenSession("USB0::0x0957::0x4918::MY57029021::INSTR");
+            this.instrument.OpenSession("DEVICE_ID");
             this.instrument.SetMeasType(U2741A.MeasType.VoltDc);
 
             this.instrument.dataAccepted += OnDataAccepted;
